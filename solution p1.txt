@@ -1,0 +1,22 @@
+def model():
+    global ds
+    global knn
+    # Charger le dataset 
+    ds = pd.read_csv("D:/COURS_EXERCICES/Python/Master/IA/dataset_notes.csv")
+ 
+    # Mettre les attributs dans la mtrice X et l’étiquette dans le vecteur y
+    X = ds.iloc[:, 0:4]
+    y = ds.iloc[:, -1]
+ 
+    
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=1)
+    # training the model on training set
+    knn = KNeighborsClassifier(n_neighbors=3)
+    knn.fit(X_train, y_train)
+    # faire des prédictions sur l'ensemble de test
+    y_pred = knn.predict(X_test)
+    print(X_test)
+    # comparer les valeurs des étiquettes réelles (y_test) aux valeurs des étiquettes prédites (y_pred)
+    acc = metrics.accuracy_score(y_test, y_pred)
+    print("kNN model accuracy:"+str(acc))
