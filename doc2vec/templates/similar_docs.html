@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Similar articles</title>
+</head>
+<body>
+	<h2>Similar articles</h2>
+	<ul>
+	{% for doc in similar_docs %}
+		<li>{{bbc_docs[doc[0]]}}</li>
+	{% endfor %}
+	</ul>
+</body>
+</html>

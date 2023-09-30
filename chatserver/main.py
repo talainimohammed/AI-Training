@@ -21,6 +21,7 @@ class MyRoot(BoxLayout):
         if self.nickname_text !="":
             client.connect((self.ip_text.text, 9999))
             message=client.recv(1024).decode('utf-8')
+            print(message)
             if message == "NICK":
                 client.send(self.nickname_text.text.encode('utf-8'))
                 self.send_btn.disabled=False
@@ -44,13 +45,15 @@ class MyRoot(BoxLayout):
     def receive(self):
         stop=False
         while not stop:
-            try:
+            #try:
                 message=client.recv(1024).decode('utf-8')
-                self.chat_text.text+=message + "\n"
-            except:
-                print("ERROR")
-                client.close()
-                stop=True
+                print(message)
+                #self.chat_text.text=message
+                self.chat_text.text+=message + "/n"
+            #except:
+            #    print("ERROR recieve")
+            #    client.close()
+            #    stop=True
 
 class int(App):
 

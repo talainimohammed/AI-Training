@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog</title>
+</head>
+<body>
+	{% for j in bbc_docs %}
+		<h2>{{j[0]}}</h2>
+		<p>{{j[1]}}</p>
+		<form action="/similar_docs" method="POST">
+			<input type="hidden" name="doc_id" value="{{j}}">
+			<input type="submit" value="Show similar articles">
+		</form>
+	{% endfor %}
+</body>
+</html>
